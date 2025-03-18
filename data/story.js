@@ -10,7 +10,7 @@ const story = {
         text: "Tu ouvres la porte, un homme d'une trentaine d'années en trench-coat te regarde, visiblement un peu anxieux vu la manière dont il triture ses doigts. \"J'ai ... une affaire pour vous.\", dit-il d'une voix nerveuse. \"Mais elle est un peu dangereuse.\"",
         choices: [
             { text: "Accepter de l'écouter", next: 3 },
-            { text: "Refuser et lui dire de partir", next: 4}
+            { text: "Refuser (Charisme requis)", next: 4, requiredStat: { stat: "charisme", value: 3 } }
         ]
     },
     2: {
@@ -22,7 +22,8 @@ const story = {
     3: {
         text: "Tu retournes t'asseoir, l'invitant à faire de même et tu l'écoute attentivement. \"Un bien précieux m'a été dérobé ... et avant de me dire d'aller voir la police, je préfère éviter. J'ai toutes les raisons de croire que ma femme bien aimée est impliquée et j'ai besoin que vous enquêtiez sur elle ... et que vous trouviez à qui elle a pu apporter cet objet.\" expliqua-t-il.",
         choices: [
-            { text: "Lui demander plus d'informations sur le bien dérobé", next: 5 }
+            { text: "Lui demander plus d'informations sur le bien dérobé", next: 5 },
+            { text: "Accepter l'affaire et prendre une avance (Ajoute 50$)", next: 6, addItem: "50 dollars" }
         ]
     },
     4: {
@@ -33,6 +34,12 @@ const story = {
         ]
     },
     5: {
+        text: "Il s'agit d'une relique très ancienne ...",
+        choices: [
+            { text: "END", next: 0}
+        ]
+    },
+    6: {
         text: "Il s'agit d'une relique très ancienne ...",
         choices: [
             { text: "END", next: 0}
