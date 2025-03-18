@@ -22,7 +22,7 @@ export default function Home() {
                 className={`px-4 py-2 rounded text-white ${isDisabled ? "bg-gray-500 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-700"}`} 
                 onClick={() => {
                   if(choice.addItem) addItem(choice.addItem);
-                  makeChoice(choice.next, index);
+                  makeChoice(choice.next, choice);
                 }}
                 disabled={isDisabled}
               >
