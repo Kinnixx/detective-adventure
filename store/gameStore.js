@@ -24,6 +24,13 @@ const useGameStore = create(devtools((set) => ({
                 useGameStore.getState().updateStats(effect.stat, effect.value);
             });
         }
+
+        // Ajoute les objets à l'inventaire (si présents)
+        if(choice.items) {
+            choice.items.forEach(item => {
+                useGameStore.getState().addItem(item);
+            });
+        }
     },
 
     updateStats: (stat, value) => {
@@ -47,7 +54,7 @@ const useGameStore = create(devtools((set) => ({
     },
 
     addItem: (item) => set((state) => ({
-        inventory: [...state.inventory, item]
+        inventory: state.inventory.includes(item) ? state.inventory : [...state.inventory, item]
     })),
 
     reset: () => set({ 

@@ -34,12 +34,12 @@ export default function HUD() {
       <div className="flex gap-4">
         {inventory.length > 0 ? (
           inventory.map((item, index) => (
-            <span key={index} className="bg-gray-700 px-2 py-1 rounded">
+            <span key={index} className="bg-gray-700 px-3 py-1 rounded-md text-white">
               {item}
             </span>
           ))
         ) : (
-          <p>Aucun objet</p>
+          <p className="text-gray-400">Aucun objet</p>
         )}
       </div>
     </div>
