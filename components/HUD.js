@@ -9,13 +9,12 @@ export default function HUD() {
   return (
     <div className="fixed top-0 left-0 w-full bg-gray-800 text-white p-4 flex justify-between items-center">
       {/* Zone des compétences */}
-      <div className="flex gap-4 relative">
+      <div className="flex gap-4 relative overflow-x-auto max-w-full sm:max-w-[80%]">
         {["charisme", "deduction", "chance"].map((stat) => (
           <div key={stat} className="relative">
 
             <p>
-              {stat === "charisme" ? "💬" : stat === "deduction" ? "🕵️" : "🍀"} 
-              {stat.charAt(0).toUpperCase() + stat.slice(1)} : {stats[stat]}
+              {stat === "charisme" ? "💬" : stat === "deduction" ? "🕵️" : "🍀"} {stats[stat]}
             </p>
 
             {/* Animation des changements de stat */}
@@ -46,7 +45,7 @@ export default function HUD() {
         initial={{ x: "100%" }} // Position initiale
         animate={{ x: isInventoryOpen ? "0%" : "100%" }} // Animation
         transition={{ type: "spring", stiffness: 100}} 
-        className="fixed top-0 right-0 w-64 h-full bg-gray-900 p-4 shadow-lg overflow-y-auto text-white"
+        className="fixed top-0 right-0 h-full w-full sm:w-64 bg-gray-900 p-4 shadow-lg overflow-y-auto text-white"
       >
         <h2 className="text-xl font-bold mb-4">Inventaire</h2>
 
