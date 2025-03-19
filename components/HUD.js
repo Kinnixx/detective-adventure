@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useGameStore from "@/store/gameStore";
 import { motion } from "framer-motion";
+import * as Tooltip from "@radix-ui/react-tooltip";
 
 export default function HUD() {
   const { stats, inventory, statChanges } = useGameStore();
@@ -10,26 +11,32 @@ export default function HUD() {
     <div className="fixed top-0 left-0 w-full bg-gray-800 text-white p-4 flex justify-between items-center">
       {/* Zone des compétences */}
       <div className="flex gap-4 relative overflow-x-auto max-w-full sm:max-w-[80%]">
-        {["charisme", "deduction", "chance"].map((stat) => (
-          <div key={stat} className="relative">
+        <Tooltip.Provider delayDuration={300}>
+          {["charisme", "deduction", "chance"].map((stat) => (
+            <div key={stat} className="relative">
+              <Tooltip.Root>
+                <Tooltip.Trigger>
+                  <p>{stat === "charisme" ? "💬" : stat === "deduction" ? "🕵️" : "🍀"} {stats[stat]}</p>
+                </Tooltip.Trigger>
+                <Tooltip.Content className="TooltipContent bg-gray-800 rounded px-2 py-1 text-white border border-gray-600 shadow-md text-sm" sideOffset={8}>
+                  { stat.charAt(0).toUpperCase() + stat.slice(1) }
+                </Tooltip.Content>
+              </Tooltip.Root>
 
-            <p>
-              {stat === "charisme" ? "💬" : stat === "deduction" ? "🕵️" : "🍀"} {stats[stat]}
-            </p>
-
-            {/* Animation des changements de stat */}
-            {statChanges.find(change => change.stat === stat) && (
-              <span 
+              {/* Animation des changements de stat */}
+              {statChanges.find(change => change.stat === stat) && (
+                <span 
                 className={`absolute top-[-20px] left-1/2 transform -translate-x-1/2 text-lg font-bold ${
                   statChanges.find(change => change.stat === stat)?.value > 0 ? "text-green-400" : "text-red-400"
                 }`}
-              >
-                {statChanges.find(change => change.stat === stat)?.value > 0 ? "+" : "-"}
-                {Math.abs(statChanges.find(change => change.stat === stat)?.value)}
-              </span>
-            )}
-          </div>
-        ))}
+                >
+                  {statChanges.find(change => change.stat === stat)?.value > 0 ? "+" : "-"}
+                  {Math.abs(statChanges.find(change => change.stat === stat)?.value)}
+                </span>
+              )}
+            </div>
+          ))}
+        </Tooltip.Provider>
       </div>
 
       {/* Bouton pour ouvrir/fermer l’inventaire */}
