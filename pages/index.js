@@ -3,7 +3,7 @@ import story from "@/data/story";
 import HUD from "@/components/HUD";
 
 export default function Home() { 
-  const { step, makeChoice, stats, addItem, updateStats } = useGameStore();
+  const { step, makeChoice, stats } = useGameStore();
   const scene = story[step]; // récupération de la scène actuelle
 
   return (
@@ -21,7 +21,6 @@ export default function Home() {
               <button key={index} 
                 className={`px-4 py-3 text-sm sm:text-base w-full sm:w-auto rounded text-white ${isDisabled ? "bg-gray-500 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-700"}`} 
                 onClick={() => {
-                  if(choice.addItem) addItem(choice.addItem);
                   makeChoice(choice.next, choice);
                 }}
                 disabled={isDisabled}
