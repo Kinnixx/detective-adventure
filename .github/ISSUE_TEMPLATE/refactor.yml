@@ -7,7 +7,7 @@ body:
     id: zone_concernee
     attributes:
       label: Quelle partie du code est concernée ?
-      placeholder: ""
+      placeholder: "Description de la partie du code concernée"
     validations:
       required: true
 
@@ -15,6 +15,6 @@ body:
     id: objectif
     attributes:
       label: Objectif du refacto
-      placeholder: ""
+      placeholder: "Description de l'objectif du refacto"
     validations:
       required: true

@@ -7,7 +7,7 @@ body:
     id: titre
     attributes:
       label: Quel est l’objectif ?
-      placeholder: ''
+      placeholder: "Objectif de la feature"
     validations:
       required: true
 
@@ -15,7 +15,7 @@ body:
     id: description
     attributes:
       label: Description
-      placeholder: ""
+      placeholder: "Description globale"
     validations:
       required: true
 

@@ -7,7 +7,7 @@ body:
     id: contexte
     attributes:
       label: Dans quelle situation le bug est-il apparu ?
-      placeholder: ""
+      placeholder: "Description de la situation"
     validations:
       required: true
 
@@ -26,12 +26,12 @@ body:
     id: comportement_attendu
     attributes:
       label: Quel comportement était attendu ?
-      placeholder: ""
+      placeholder: "Description du comportement attendu"
     validations:
       required: false
 
   - type: input
     id: navigateur
     attributes:
-      label: Navigateur / OS utilisé
-      placeholder: ""
+      label: Navigateur utilisé
+      placeholder: "Sur quel navigateur est-ce survenu"
