@@ -1,0 +1,20 @@
+name: 🔧 Refacto ou nettoyage
+description: Amélioration du code sans changement de fonctionnalité
+title: "[REFACTO] : "
+labels: [refactor]
+body:
+  - type: textarea
+    id: zone_concernee
+    attributes:
+      label: Quelle partie du code est concernée ?
+      placeholder: ""
+    validations:
+      required: true
+
+  - type: textarea
+    id: objectif
+    attributes:
+      label: Objectif du refacto
+      placeholder: ""
+    validations:
+      required: true

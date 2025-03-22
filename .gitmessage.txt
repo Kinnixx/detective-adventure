@@ -1,0 +1,9 @@
+# Type de commit :
+# feat:     ajout d'une nouvelle fonctionnalité
+# fix:      correction de bug
+# refactor: amélioration du code sans ajout de fonctionnalité
+# style:    modification du style
+# docs:     modifications de documentation
+# chore:    tâches diverses (MAJ dépendances, config…)
+
+# Corps du message (optionnel) :
