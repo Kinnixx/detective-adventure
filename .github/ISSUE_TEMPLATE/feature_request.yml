@@ -1,0 +1,29 @@
+name: 🧠 Idée de fonctionnalité
+description: Idée d'amélioration / nouvelle idée
+title: "[FEATURE] : "
+labels: [feature]
+body:
+  - type: input
+    id: titre
+    attributes:
+      label: Quel est l’objectif ?
+      placeholder: ''
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      placeholder: ""
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priorite
+    attributes:
+      label: Priorité
+      options:
+        - Haute 🚨
+        - Moyenne ⚠️
+        - Basse 💤

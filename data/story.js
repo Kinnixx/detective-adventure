@@ -22,23 +22,23 @@ const story = {
     3: {
         text: "Tu retournes t'asseoir, l'invitant à faire de même et tu l'écoute attentivement. \"Un bien précieux m'a été dérobé ... et avant de me dire d'aller voir la police, je préfère éviter. J'ai toutes les raisons de croire que ma femme bien aimée est impliquée et j'ai besoin que vous enquêtiez sur elle ... et que vous trouviez à qui elle a pu apporter cet objet.\" expliqua-t-il.",
         choices: [
-            { text: "Lui demander plus d'informations sur le bien dérobé", next: 5, effects: [{ stat: "deduction", value: +1 }] },
-            { text: "Accepter l'affaire et prendre une avance", next: 5, effects: [{ stat: "charisme", value: +1 }], items: ["50 crédits"] }
+            { text: "Lui demander plus d'informations sur le bien dérobé", next: 5, effects: [{ stat: "deduction", value: 1 }] },
+            { text: "Accepter l'affaire et prendre une avance", next: 5, effects: [{ stat: "charisme", value: 1 }], items: [{ object: "Potion de réflexion", type: "affectStats", use: { stat: "deduction", value: 2} }] }
         ]
     },
     4: {
         text: "L'homme écarquille les yeux, un peu paniqué face à ton refus instantané. \'Attendez ! Je peux payer, grassement ... je suis prêt à donner toutes mes économies ! Tenez, je vous donne même une avance de 100 crédits !\" s'écria-t-il.",
         choices: [
-            { text: "Être payé grassement t'intéresse, tu l'écoutes.", next: 3, items: ["100 crédits"] },
+            { text: "Être payé grassement t'intéresse, tu l'écoutes.", next: 3, items: [{ object: "100 crédits"}] },
             { text: "Tu n'y crois absolument pas, le mettre dehors", next: 2, effects: [{ stat: "charisme", value: -1 }] }
         ]
     },
     5: {
         text: "\"Il s'agit d'une relique très ancienne ... quelque chose qui comporte un grand pouvoir. Ecoutez attentivement : il ne faudra surtout pas que vous la touchiez, elle pourrait vous ... tuer. Vous devrez être très prudent.\" dit-il, le regard sérieux. Il te tend notamment un document, sur laquelle est affichée une photo de sa femme et quelques informations.",
         choices: [
-            { text: "Tu prends le document, tu te lèves et tu quittes le bureau sans attendre.", next: 7, items: ["Document du client"]},
-            { text: "Tu prends le document, tu le ranges, et tu demandes plus d'informations sur cette relique si dangereuse.", next: 8, items: ["Document du client"]},
-            { text: "Tu ouvres un tiroir et prend ton carnet, hors de question de toucher ce document.", next: 6, items: ["Carnet"]}
+            { text: "Tu prends le document, tu te lèves et tu quittes le bureau sans attendre.", next: 7, items: [{ object: "Document du client", type: "infos" }]},
+            { text: "Tu prends le document, tu le ranges, et tu demandes plus d'informations sur cette relique si dangereuse.", next: 8, items: [{ object: "Document du client", type: "infos" }]},
+            { text: "Tu ouvres un tiroir et prend ton carnet, hors de question de toucher ce document.", next: 6, items: [{ object: "Carnet" }]}
         ]
     },
     6: {

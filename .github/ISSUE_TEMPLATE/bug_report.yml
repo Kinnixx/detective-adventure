@@ -1,0 +1,37 @@
+name: 🐛 Bug
+description: Comportement inattendu / dysfonctionnement
+title: "[BUG] : "
+labels: [bug]
+body:
+  - type: input
+    id: contexte
+    attributes:
+      label: Dans quelle situation le bug est-il apparu ?
+      placeholder: ""
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Étapes pour reproduire
+      placeholder: |
+        1. Aller à…
+        2. Cliquer sur…
+        3. Observer que…
+    validations:
+      required: true
+
+  - type: textarea
+    id: comportement_attendu
+    attributes:
+      label: Quel comportement était attendu ?
+      placeholder: ""
+    validations:
+      required: false
+
+  - type: input
+    id: navigateur
+    attributes:
+      label: Navigateur / OS utilisé
+      placeholder: ""

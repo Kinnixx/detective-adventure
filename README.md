@@ -59,11 +59,46 @@ Bienvenue dans **Detective Quest**, un jeu narratif où vous incarnez un détect
 - 🔄 **Sauvegarde des choix du joueur pour afficher des statistiques**
 - 🎮 **Gestion avancée de l'inventaire et des objets consommables**
 - 🌐 **Connexion API**
-- Et bien d'autres surprises à venir...
+- Et bien d'autres à venir...
 
-## 🖊️ Auteur
-Développé par **[@Kinnixx](https://github.com/Kinnixx)** 🎸💻
+## 🤝 Conventions & Contribution
+
+Même si ce projet est solo (pour l’instant 👀), il suit une structure claire :
+
+### 🔀 Branches
+- `main` : la branche stable, propre, toujours déployable.
+- `dev` : la branche de développement active.
+- ➕ **Chaque fonctionnalité** peut être développée sur une branche dédiée (`feat/tooltips`, `refactor/HUD`, etc.) puis mergée via une **PR propre vers `dev`**.
+
+### 📝 Commits
+Les messages de commit suivent ce format :
+
+#### 🔖 Types de commit :
+
+- `feat` : ajout d'une nouvelle fonctionnalité  
+- `fix` : correction de bug  
+- `refactor` : amélioration du code sans ajout de fonctionnalité  
+- `style` : modification du style
+- `docs` : modifications de documentation  
+- `chore` : tâches diverses (MAJ dépendances, config…)
+
+#### ✏️ Corps du message (optionnel) :
+...
+
+_✨ Grâce à un template de commit configuré, le format est pré-rempli automatiquement._
+
+### 📋 Pull Requests
+Chaque PR s’appuie sur un **template automatique**, avec :
+- une description claire  
+- une checklist à valider  
+- des screenshots si besoin
+
+### 🧾 Issues
+Des modèles d’issues sont prêts pour :
+- [x] Suggérer une **nouvelle fonctionnalité**
+- [x] Déclarer un **bug**
+- [x] Lister un **refacto ou une amélioration de code**
 
 ---
-🚀 *Envie de contribuer ? Forkez le repo et proposez vos idées !*
 
+_Développé par **[@Kinnixx](https://github.com/Kinnixx)** 🎸💻_

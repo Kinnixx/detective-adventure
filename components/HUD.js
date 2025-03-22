@@ -4,13 +4,14 @@ import { motion } from "framer-motion";
 import * as Tooltip from "@radix-ui/react-tooltip";
 
 export default function HUD() {
-  const { stats, inventory, statChanges } = useGameStore();
+  const { stats, inventory, statChanges, useItem } = useGameStore();
   const [isInventoryOpen, setIsInventoryOpen] = useState(false);
 
   return (
     <div className="fixed top-0 left-0 w-full bg-gray-800 text-white p-4 flex justify-between items-center">
+      
       {/* Zone des compétences */}
-      <div className="flex gap-4 relative overflow-x-auto max-w-full sm:max-w-[80%]">
+      <div className="flex gap-4 relative max-w-full sm:max-w-[80%]">
         <Tooltip.Provider delayDuration={300}>
           {["charisme", "deduction", "chance"].map((stat) => (
             <div key={stat} className="relative">
@@ -68,8 +69,17 @@ export default function HUD() {
         {inventory.length > 0 ? (
           <ul className="space-y-2">
             {inventory.map((item, index) => (
-              <li key={index} className="bg-gray-700 px-3 py-1 rounded-md text-white">
-                {item}
+              <li key={index} className={`bg-gray-700 px-3 py-1 rounded-md ${item.type ? "text-emerald-200" : "text-white"}`}>
+                {item.type !== "affectChoices" && (
+                  <button 
+                    onClick={() => {
+                      useItem(item);
+                    }}
+                  >
+                    {item.type === 'affectStats' ? "✋" : item.type === 'infos' ? "🔍" : ""} 
+                  </button>
+                )}
+                <span>{item.object}</span> 
               </li>  
             ))}
           </ul>
@@ -77,18 +87,6 @@ export default function HUD() {
           <p className="text-gray-400">Aucun objet</p>
         )}
       </motion.div>
-      {/* Zone de l’inventaire */}
-{/*       <div className="flex gap-4">
-        {inventory.length > 0 ? (
-          inventory.map((item, index) => (
-            <span key={index} className="bg-gray-700 px-3 py-1 rounded-md text-white">
-              {item}
-            </span>
-          ))
-        ) : (
-          <p className="text-gray-400">Aucun objet</p>
-        )}
-      </div> */}
     </div>
   );
 }
