@@ -9,6 +9,7 @@ export default function HUD() {
 
   return (
     <div className="fixed top-0 left-0 w-full bg-gray-800 text-white p-4 flex justify-between items-center">
+      
       {/* Zone des compétences */}
       <div className="flex gap-4 relative max-w-full sm:max-w-[80%]">
         <Tooltip.Provider delayDuration={300}>

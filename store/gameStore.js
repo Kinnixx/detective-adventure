@@ -54,20 +54,16 @@ const useGameStore = create(devtools((set) => ({
     },
 
     addItem: (item) => set((state) => ({
-        //inventory: state.inventory.indexOf(item.object) >= 0 ? state.inventory : [...state.inventory, item]
         inventory: state.inventory.some(i => i.object === item.object)
             ? state.inventory
             : [...state.inventory, item]
     })),
 
     useItem: (item) => set((state) => {
-        // Est-ce que l'objet amène une augmentation de stat ? 
+        // Est-ce que l'objet amène une augmentation de stat
         if(item.type === 'affectStats') {
-        // Oui => on continue
-            // Màj de la stat via updateStat
             useGameStore.getState().updateStats(item.use.stat, item.use.value);
         }
-        // Non => on verra plus tard pour gérer l'affichage des autres objets (documents)
         
         return {
             // On retire l'objet de l'inventaire
