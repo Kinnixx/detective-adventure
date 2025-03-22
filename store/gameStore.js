@@ -68,7 +68,7 @@ const useGameStore = create(devtools((set) => ({
             useGameStore.getState().updateStats(item.use.stat, item.use.value);
         }
         // Non => on verra plus tard pour gérer l'affichage des autres objets (documents)
-            
+        
         return {
             // On retire l'objet de l'inventaire
             inventory: state.inventory.filter(i => i.object !== item.object)
