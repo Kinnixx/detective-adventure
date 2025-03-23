@@ -36,9 +36,9 @@ const story = {
     5: {
         text: "\"Il s'agit d'une relique très ancienne ... quelque chose qui comporte un grand pouvoir. Ecoutez attentivement : il ne faudra surtout pas que vous la touchiez, elle pourrait vous ... tuer. Vous devrez être très prudent.\" dit-il, le regard sérieux. Il te tend notamment un document, sur laquelle est affichée une photo de sa femme et quelques informations.",
         choices: [
-            { text: "Tu prends le document, tu te lèves et tu quittes le bureau sans attendre.", next: 7, items: [{ object: "Document du client", type: "infos" }]},
-            { text: "Tu prends le document, tu le ranges, et tu demandes plus d'informations sur cette relique si dangereuse.", next: 8, items: [{ object: "Document du client", type: "infos" }]},
-            { text: "Tu ouvres un tiroir et prend ton carnet, hors de question de toucher ce document.", next: 6, items: [{ object: "Carnet" }]}
+            { text: "Tu prends le document, tu te lèves et tu quittes le bureau sans attendre.", next: 7, items: [{ object: "Document du client", type: "infos", content: "Ce document contient l'adresse du suspect ainsi qu'une photo de la femme du client." }]},
+            { text: "Tu prends le document, tu le ranges, et tu demandes plus d'informations sur cette relique si dangereuse.", next: 8, items: [{ object: "Document du client", type: "infos", content: "Ce document contient l'adresse du suspect ainsi qu'une photo de la femme du client." }]},
+            { text: "Tu ouvres un tiroir et prend ton carnet, hors de question de toucher ce document.", next: 6, items: [{ object: "Carnet", type: "infos", content: "Des notes sur de vieilles affaires, la plupart du temps totalement inintéressantes. Sur une page cornée, l'adresse de ton bar favoris." }]}
         ]
     },
     6: {
