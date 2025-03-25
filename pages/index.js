@@ -3,8 +3,16 @@ import story from "@/data/story";
 import HUD from "@/components/HUD";
 
 export default function Home() { 
-  const { step, makeChoice, stats } = useGameStore();
+  const { step, makeChoice, stats, inventory } = useGameStore();
   const scene = story[step]; // récupération de la scène actuelle
+
+  // Un choix peut être impossible à choisir si le joueur n'a pas la stat ou l'objet requis
+  const isChoiceDisabled = (choice) => {
+    const lacksStat = choice.requiredStat && stats[choice.requiredStat.stat] < choice.requiredStat.value;
+    const lacksObject = choice.requiredObject && !inventory.some(item => item.object.toLowerCase() === choice.requiredObject.toLowerCase());
+
+    return lacksStat || lacksObject;
+  }
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">
@@ -14,8 +22,8 @@ export default function Home() {
 
       <div className="mt-6 flex flex-col gap-4">
         { scene.choices.map((choice, index) => {
-          const isDisabled = choice.requiredStat && stats[choice.requiredStat.stat] < choice.requiredStat.value;
-         
+          const isDisabled = isChoiceDisabled(choice);
+
           return (
             <div>
               <button key={index} 
@@ -25,7 +33,19 @@ export default function Home() {
                 }}
                 disabled={isDisabled}
               >
-                {choice.text} {isDisabled && `(Requis: ${choice.requiredStat.stat} ${choice.requiredStat.value}+)`}
+                {choice.text}
+
+                {/* Affichage des éléments requis */}
+                {choice.requiredStat && (
+                  <span className={`text-sm ${isDisabled ? "text-red-400" : "text-green-400"} ml-2`}>
+                  (Requis : {choice.requiredStat.stat} {choice.requiredStat.value}+)
+                </span>                  
+                )}
+                {choice.requiredObject && (
+                  <span className={`text-sm ${isDisabled ? "text-red-400" : "text-green-400"} ml-2`}>
+                  (Requis : {choice.requiredObject})
+                </span>                  
+                )}
               </button>
             </div>
           );
