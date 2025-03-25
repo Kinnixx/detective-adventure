@@ -60,11 +60,8 @@ const useGameStore = create(devtools((set) => ({
     })),
 
     useItem: (item) => set((state) => {
-        // Est-ce que l'objet amène une augmentation de stat
-        if(item.type === 'affectStats') {
-            useGameStore.getState().updateStats(item.use.stat, item.use.value);
-        }
-        
+        useGameStore.getState().updateStats(item.use.stat, item.use.value);
+
         return {
             // On retire l'objet de l'inventaire
             inventory: state.inventory.filter(i => i.object !== item.object)
