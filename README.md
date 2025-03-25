@@ -10,7 +10,6 @@ Bienvenue dans **Detective Quest**, un jeu narratif où vous incarnez un détect
 - **Système de compétences** influençant les décisions.
 - **Inventaire dynamique** contenant des objets récupérés pendant l'enquête, qui peuvent être très utiles... ou au contraire, vous mettre des bâtons dans les roues !
 - **Interface fluide et responsive** (Next.js + Tailwind CSS).
-- **Animations et transitions modernes** avec Framer Motion.
 
 ## 🛠️ Technologies utilisées (d'autres à venir)
 - **Next.js**
@@ -57,7 +56,6 @@ Bienvenue dans **Detective Quest**, un jeu narratif où vous incarnez un détect
 ## 💡 Améliorations futures
 - 📜 **Ajout de nouvelles intrigues et fins alternatives**
 - 🔄 **Sauvegarde des choix du joueur pour afficher des statistiques**
-- 🎮 **Gestion avancée de l'inventaire et des objets consommables**
 - 🌐 **Connexion API**
 - Et bien d'autres à venir...
 
