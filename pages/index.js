@@ -1,10 +1,25 @@
 import useGameStore from "@/store/gameStore";
 import story from "@/data/story";
 import HUD from "@/components/HUD";
+import { useEffect } from "react";
+import supabase from "@/lib/supabase";
 
 export default function Home() { 
   const { step, makeChoice, stats, inventory } = useGameStore();
   const scene = story[step]; // récupération de la scène actuelle
+
+  useEffect(() => {
+    const fetchScenes = async () => {
+      const { data, error } = await supabase.from("scenes").select("*");
+      if(error) {
+        console.log("Erreur :", error);
+      } else {
+        console.log("Scènes récupérées :", data);
+      }
+    };
+
+    fetchScenes();
+  }, []);
 
   // Un choix peut être impossible à choisir si le joueur n'a pas la stat ou l'objet requis
   const isChoiceDisabled = (choice) => {
