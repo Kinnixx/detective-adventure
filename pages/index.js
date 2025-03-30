@@ -24,7 +24,7 @@ export default function Home() {
     const itemName = choice.item?.name?.toLowerCase();
   
     const lacksStat = statName && (stats[statName] ?? 0) < choice.required_stat_value;
-    const lacksObject = itemName && !inventory.some(item => item.object.toLowerCase() === itemName);
+    const lacksObject = itemName && !inventory.some(item => item.name.toLowerCase() === itemName);
   
     return lacksStat || lacksObject;
   }
