@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
 const useGameStore = create(devtools((set) => ({
-    step: 0,
+    step: 1,
     choices: [],
     stats: {
         charisme: 1,
