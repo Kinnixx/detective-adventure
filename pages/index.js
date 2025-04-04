@@ -18,7 +18,7 @@ export default function Home() {
     loadScene();
   }, [step]);
 
-  // Un choix peut être impossible à choisir si le joueur n'a pas la stat ou l'objet requis
+  // Un choix peut être impossible à sélectionner si le joueur n'a pas la stat ou l'objet requis
   const isChoiceDisabled = (choice) => {
     const statName = choice.stat?.name?.toLowerCase();
     const itemName = choice.item?.name?.toLowerCase();
