@@ -6,7 +6,7 @@ const useGameStore = create(devtools((set) => ({
     choices: [],
     stats: {
         charisme: 1,
-        deduction: 1,
+        déduction: 1,
         chance: 1
     },
     inventory: [],
@@ -18,17 +18,18 @@ const useGameStore = create(devtools((set) => ({
             choices: [...state.choices, choice] 
         }));
 
-        // Appliquer les effets des choix (si présents)
-        if(choice.effects) {
+        if (choice.effects) {
             choice.effects.forEach(effect => {
-                useGameStore.getState().updateStats(effect.stat, effect.value);
-            });
-        }
-
-        // Ajoute les objets à l'inventaire (si présents)
-        if(choice.items) {
-            choice.items.forEach(item => {
-                useGameStore.getState().addItem(item);
+              // Appliquer l'effet sur les stats
+              const statName = effect.stat?.name?.toLowerCase();
+              if (statName && typeof effect.stat_value === "number") {
+                useGameStore.getState().updateStats(statName, effect.stat_value);
+              }
+          
+              // Ajouter un objet si présent
+              if (effect.item) {
+                useGameStore.getState().addItem(effect.item);
+              }
             });
         }
     },

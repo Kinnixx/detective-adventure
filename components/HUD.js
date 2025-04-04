@@ -24,11 +24,11 @@ export default function HUD() {
       {/* Zone des compétences */}
       <div className="flex gap-4 relative max-w-full sm:max-w-[80%]">
         <Tooltip.Provider delayDuration={300}>
-          {["charisme", "deduction", "chance"].map((stat) => (
+          {["charisme", "déduction", "chance"].map((stat) => (
             <div key={stat} className="relative">
               <Tooltip.Root>
                 <Tooltip.Trigger>
-                  <p>{stat === "charisme" ? "💬" : stat === "deduction" ? "🕵️" : "🍀"} {stats[stat]}</p>
+                  <p>{stat === "charisme" ? "💬" : stat === "déduction" ? "🕵️" : "🍀"} {stats[stat]}</p>
                 </Tooltip.Trigger>
                 <Tooltip.Content className="TooltipContent bg-gray-800 rounded px-2 py-1 text-white border border-gray-600 shadow-md text-sm" sideOffset={8}>
                   { stat.charAt(0).toUpperCase() + stat.slice(1) }
@@ -86,7 +86,7 @@ export default function HUD() {
                     {item.type === 'affectStats' ? "✋" : item.type === 'infos' ? "🔍" : ""} 
                   </button>
                 )}
-                <span>{item.object}</span> 
+                <span>{item.name}</span> 
               </li>  
             ))}
           </ul>
