@@ -6,7 +6,7 @@ const useGameStore = create(devtools((set) => ({
     choices: [],
     stats: {
         charisme: 1,
-        déduction: 1,
+        deduction: 1,
         chance: 1
     },
     inventory: [],
