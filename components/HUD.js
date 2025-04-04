@@ -24,7 +24,7 @@ export default function HUD() {
       {/* Zone des compétences */}
       <div className="flex gap-4 relative max-w-full sm:max-w-[80%]">
         <Tooltip.Provider delayDuration={300}>
-          {["charisme", "deduction", "chance"].map((stat) => (
+          {Object.keys(stats).map((stat) => (
             <div key={stat} className="relative">
               <Tooltip.Root>
                 <Tooltip.Trigger>
@@ -86,7 +86,7 @@ export default function HUD() {
                     {item.type === 'affectStats' ? "✋" : item.type === 'infos' ? "🔍" : ""} 
                   </button>
                 )}
-                <span>{item.object}</span> 
+                <span>{item.name}</span> 
               </li>  
             ))}
           </ul>
