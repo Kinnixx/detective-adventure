@@ -55,17 +55,17 @@ const useGameStore = create(devtools((set) => ({
     },
 
     addItem: (item) => set((state) => ({
-        inventory: state.inventory.some(i => i.object === item.object)
+        inventory: state.inventory.some(i => i.id === item.id)
             ? state.inventory
             : [...state.inventory, item]
     })),
 
     useItem: (item) => set((state) => {
-        useGameStore.getState().updateStats(item.use.stat, item.use.value);
+        useGameStore.getState().updateStats(item.affected_stat, item.affected_stat_value);
 
         return {
             // On retire l'objet de l'inventaire
-            inventory: state.inventory.filter(i => i.object !== item.object)
+            inventory: state.inventory.filter(i => i.id !== item.id)
         };
     }),    
 
