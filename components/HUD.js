@@ -22,7 +22,7 @@ export default function HUD() {
     <div className="fixed top-0 left-0 w-full bg-gray-800 text-white p-4 flex justify-between items-center">
       
       {/* Zone des compétences */}
-      <div className="flex gap-4 relative max-w-full sm:max-w-[80%]">
+      <div className="flex gap-4 relative max-w-full sm:max-w-[80%] border border-gray-700 rounded p-2 bg-gray-900">
         <Tooltip.Provider delayDuration={300}>
           {Object.keys(stats).map((stat) => (
             <div key={stat} className="relative">
@@ -53,7 +53,7 @@ export default function HUD() {
 
       {/* Bouton pour ouvrir/fermer l’inventaire */}
       <button 
-        className="bg-blue-500 px-3 py-1 rounded-md text-white hover:bg-blue-700 transition"
+        className="bg-blue-500 px-3 py-1 rounded-md text-white hover:bg-blue-700 transition focus:outline-none focus:ring-2 focus:ring-blue-300"
         onClick={() => setIsInventoryOpen(!isInventoryOpen)}
       >
         {isInventoryOpen ? "Fermer l'inventaire" : "Inventaire"}
@@ -70,7 +70,7 @@ export default function HUD() {
 
         {/* Bouton pour fermer l'inventaire */}
         <button
-          className="absolute top-4 right-4 text-gtay-400 hover:text-white"
+          className="absolute top-4 right-4 text-gray-400 hover:text-white"
           onClick={() => setIsInventoryOpen(false)}
         >
           ✖️
@@ -82,7 +82,7 @@ export default function HUD() {
             {inventory.map((item, index) => (
               <li key={index} className={`bg-gray-700 px-3 py-1 rounded-md ${item.type ? "text-emerald-200" : "text-white"}`}>
                 {item.type !== "affectChoices" && (
-                  <button onClick={() => handleItemUse(item)}>
+                  <button onClick={() => handleItemUse(item)} className="hover:bg-gray-600 cursor-pointer transition rounded">
                     {item.type === 'affectStats' ? "✋" : item.type === 'infos' ? "🔍" : ""} 
                   </button>
                 )}

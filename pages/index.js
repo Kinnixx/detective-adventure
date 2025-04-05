@@ -36,7 +36,7 @@ export default function Home() {
 
       {scene ? (
         <>
-        <p className="mt-4 p-4 text-base sm:text-lg leading-relaxed">{scene.text}</p>
+        <p className="mt-4 p-4 text-base sm:text-lg leading-relaxed max-w-3xl">{scene.text}</p>
 
         <div className="mt-6 flex flex-col gap-4">
           { scene.choices.map((choice, index) => {
