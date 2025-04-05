@@ -36,7 +36,7 @@ export default function Home() {
 
       {scene ? (
         <>
-        <p className="mt-4 p-4 text-lg leading-relaxed sm:text-xl">{scene.text}</p>
+        <p className="mt-4 p-4 text-base sm:text-lg leading-relaxed max-w-3xl">{scene.text}</p>
 
         <div className="mt-6 flex flex-col gap-4">
           { scene.choices.map((choice, index) => {
@@ -45,7 +45,7 @@ export default function Home() {
             return (
               <div>
                 <button key={index} 
-                  className={`px-4 py-3 text-sm sm:text-base w-full sm:w-auto rounded text-white ${isDisabled ? "bg-gray-500 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-700"}`} 
+                  className={`px-4 py-3 text-sm sm:text-base w-full sm:w-auto max-w-md rounded text-white ${isDisabled ? "bg-gray-500 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-700"}`} 
                   onClick={() => {
                     makeChoice(choice.next_scene_id, choice);
                   }}

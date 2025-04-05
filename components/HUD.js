@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import useGameStore from "@/store/gameStore";
 import { motion } from "framer-motion";
 import * as Tooltip from "@radix-ui/react-tooltip";
@@ -8,6 +8,7 @@ export default function HUD() {
   const [isInventoryOpen, setIsInventoryOpen] = useState(false);
   const [isDialogInfosOpen, setIsDialogInfosOpen] = useState(false);
   const [currentInfosData, setCurrentInfosData] = useState("");
+  const closeModalButtonRef = useRef(null);
 
   const handleItemUse = (item) => {
     if(item.type === 'affectStats') {
@@ -18,11 +19,17 @@ export default function HUD() {
     }
   };
 
+  useEffect(() => {
+    if (isDialogInfosOpen && closeModalButtonRef.current) {
+      closeModalButtonRef.current.focus();
+    }
+  }, [isDialogInfosOpen]); 
+
   return (
     <div className="fixed top-0 left-0 w-full bg-gray-800 text-white p-4 flex justify-between items-center">
       
       {/* Zone des compétences */}
-      <div className="flex gap-4 relative max-w-full sm:max-w-[80%]">
+      <div className="flex gap-4 relative max-w-full sm:max-w-[80%] border border-gray-700 rounded p-2 bg-gray-900">
         <Tooltip.Provider delayDuration={300}>
           {Object.keys(stats).map((stat) => (
             <div key={stat} className="relative">
@@ -53,7 +60,7 @@ export default function HUD() {
 
       {/* Bouton pour ouvrir/fermer l’inventaire */}
       <button 
-        className="bg-blue-500 px-3 py-1 rounded-md text-white hover:bg-blue-700 transition"
+        className="bg-blue-500 px-3 py-1 rounded-md text-white hover:bg-blue-700 transition focus:outline-none focus:ring-2 focus:ring-blue-300"
         onClick={() => setIsInventoryOpen(!isInventoryOpen)}
       >
         {isInventoryOpen ? "Fermer l'inventaire" : "Inventaire"}
@@ -70,7 +77,7 @@ export default function HUD() {
 
         {/* Bouton pour fermer l'inventaire */}
         <button
-          className="absolute top-4 right-4 text-gtay-400 hover:text-white"
+          className="absolute top-4 right-4 text-gray-400 hover:text-white"
           onClick={() => setIsInventoryOpen(false)}
         >
           ✖️
@@ -82,7 +89,11 @@ export default function HUD() {
             {inventory.map((item, index) => (
               <li key={index} className={`bg-gray-700 px-3 py-1 rounded-md ${item.type ? "text-emerald-200" : "text-white"}`}>
                 {item.type !== "affectChoices" && (
-                  <button onClick={() => handleItemUse(item)}>
+                  <button 
+                    onClick={() => handleItemUse(item)} 
+                    aria-label={`Utiliser l'objet ${item.name}`}
+                    className="hover:bg-gray-600 cursor-pointer transition rounded"
+                  >
                     {item.type === 'affectStats' ? "✋" : item.type === 'infos' ? "🔍" : ""} 
                   </button>
                 )}
@@ -96,11 +107,18 @@ export default function HUD() {
       </motion.div>
 
       {isDialogInfosOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50" role="dialog" aria-modal="true">
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50" 
+          role="dialog" 
+          aria-modal="true"
+          aria-labelledby="modal-title"
+          aria-describedby="modal-content"
+        >
           <div className="bg-gray-800 p-6 rounded shadow-md max-w-md w-full">
-            <h3 className="text-lg font-bold mb-2">{currentInfosData.object}</h3>
-            <p className="text-white">{currentInfosData.content}</p>
+            <h3 id="modal-title" className="text-lg font-bold mb-2">{currentInfosData.object}</h3>
+            <p id="modal-content" className="text-white">{currentInfosData.content}</p>
             <button 
+              ref={closeModalButtonRef}
               className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
               onClick={() => setIsDialogInfosOpen(false)}
             >
