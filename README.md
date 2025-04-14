@@ -55,8 +55,7 @@ Bienvenue dans **Detective Quest**, un jeu narratif où vous incarnez un détect
 
 ## 💡 Améliorations futures
 - 📜 **Ajout de nouvelles intrigues et fins alternatives**
-- 🔄 **Sauvegarde des choix du joueur pour afficher des statistiques**
-- 🌐 **Connexion API**
+- 🔄 **Sauvegarde des choix du joueur et affichage de statistiques**
 - Et bien d'autres à venir...
 
 ## 🤝 Conventions & Contribution
